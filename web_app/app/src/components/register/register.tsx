@@ -1,10 +1,11 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
+import './register.css'
 
 const Register: React.FunctionComponent = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const newUser = { username, password }
 
@@ -22,28 +23,47 @@ const Register: React.FunctionComponent = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
+      <div className="register-div">
+        <form onSubmit={handleSubmit} className="register-form">
+          <label
+            htmlFor="username"
+            className="username-label"
+          >
+            Username
+          </label>
+          <input
           type="text"
           id={username}
           name="username"
           value={username}
+          className="username-input"
+          placeholder="Enter username.."
           onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
+          />
+          <label
+            htmlFor="password"
+            className="password-label"
+          >
+            Password
+          </label>
+          <input
           type="password"
           name="password"
           value={password}
+          className="password-input"
+          placeholder="Enter password.."
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
+          />
+          <button
           type="submit"
-        >
-          Create account
-        </button>
-      </form>
+          className="submit-button"
+          >
+          Register account
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
 
-export default Register;
+export default Register

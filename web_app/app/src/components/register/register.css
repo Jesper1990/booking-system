@@ -1,0 +1,41 @@
+.register-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.register-form {
+  border: 1px solid rgb(169, 169, 169);
+  background-color: rgb(26, 26, 26);
+  padding: 20px;
+  width: 50%;
+}
+.username-label {
+  font-size: 14px;
+  color: rgb(169, 169, 169);
+}
+.username-input {
+  display: block;
+  border: 1px solid rgb(169, 169, 169);
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 95%;
+}
+.password-label {
+  font-size: 14px;
+  color: rgb(169, 169, 169);
+}
+.password-input {
+  display: block;
+  border: 1px solid rgb(169, 169, 169);
+  padding: 10px;
+  width: 95%;
+  margin-bottom: 5px;
+}
+.submit-button {
+  background-color: rgb(255, 124, 0);
+  color: rgb(255, 255, 255);
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+}
