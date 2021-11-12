@@ -1,6 +1,7 @@
 
 import './App.css'
-import Register from './components/register/register'
+import Calendar from './components/Calendar/Calendar'
+import Register from './components/Register/Register'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       Springboot + React TypeScript
       <Register />
+      <Calendar />
     </div>
   )
 }

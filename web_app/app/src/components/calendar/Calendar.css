@@ -1,0 +1,17 @@
+.month-year {
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+.days-of-week {
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.days-number {
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  cursor: pointer;
+}
