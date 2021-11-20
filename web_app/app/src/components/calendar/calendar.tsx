@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import './Calendar.css'
 
-const Calendar = () => {
-  // const test = new Date().toString().split('20')[0]
-  // console.log(test)
-  // const test = new Date()
-  // const month = test.toLocaleString('sv-SE', { month: 'long', day: 'numeric', year: 'numeric'})
-  // console.log(month);
- 
+const Calendar: React.FC<{}> = () => {
+  
   const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   const daysLeap = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   const daysOfTheWeek = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag']
   const months = ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December']
+  // const [selectedDate, setSelectedDate] = React.useState<string | null>();
 
-  function getStartDayOfMonth(date: Date) {
+  // const handleChange = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   setSelectedDate(e.currentTarget.getAttribute('value'))
+  // }
+
+  const getStartDayOfMonth = (date: Date) =>{
     const startDate = new Date(date.getFullYear(), date.getMonth(), 1).getDay()
     return startDate === 0 ? 7 : startDate
+   
   }
   const today = new Date()
   const [date, setDate] = React.useState(today)
@@ -24,22 +25,17 @@ const Calendar = () => {
   const [year, setYear] = React.useState(date.getFullYear())
   const [startDay, setStartDay] = React.useState(getStartDayOfMonth(date))
 
-  useEffect(() => {
+  React.useEffect(() => {
     setDay(date.getDay())
     setMonth(date.getMonth())
     setYear(date.getFullYear())
     setStartDay(getStartDayOfMonth(date))
   }, [date])
 
-  function isLeapYear(year: number) {
+  const isLeapYear = (year: number) => {
    return (year % 4 === 0 && year % 100 !== 0 ) || year % 400 === 0
   }
   const displayDays = isLeapYear(year) ? daysLeap : days
-
-  const isToday = () => {
-    if (today === date)
-      return true
-  }
   return (
     <div className="main">
       <div className="content">
@@ -51,26 +47,31 @@ const Calendar = () => {
           <button onClick={() => setDate(new Date(year, month + 1, day))}>Nästa</button>
         </div>
         <div className="days-of-week">
-          {daysOfTheWeek.map((d) => (
-            <div key={d}>
-              <p>{d}</p>
+          {daysOfTheWeek.map((daysText) => (
+            <div
+              key={daysText}
+              className="days-container"
+            >
+              <p>{daysText}</p>
             </div>
           ))}
-          </div>
-          <div className="days-number">
-            {Array(displayDays[month] + (startDay - 1)).fill(null).map((_, index) => {
-            const d = index - (startDay - 2)
+          {Array(displayDays[month] + (startDay - 1)).fill(null).map((_, index) => {
+            const daysNumber = index - (startDay - 2)
+            const checkToday = index + 1 === today.getDate() ;
             return (
+              <div>
               <div
                 key={index}
-                onClick={() => setDate(new Date(year, month, d))}
+                // onClick={() => setDate(new Date(year, month, daysNumber))}
+                // onClick={() => console.log(daysNumber, index)}
+                className={checkToday ? 'days-container-today' : 'days-container'}
               >
-                {d > 0 ? d : ''}
+                  {daysNumber > 0 ? daysNumber : ''}                
+                </div>
               </div>
-            )
-          })}
-          </div>          
-                
+              )
+            })}
+        </div>                                
       </div>     
     </div>
   )

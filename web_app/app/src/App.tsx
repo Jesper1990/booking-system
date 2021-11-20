@@ -7,7 +7,6 @@ function App() {
 
   return (
     <div className="App">
-      Springboot + React TypeScript
       <Register />
       <Calendar />
     </div>

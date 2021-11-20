@@ -1,17 +1,36 @@
+.content {
+  background-color: aliceblue;
+}
 .month-year {
   display: flex;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+/* .days-of-week {
+  display: flex;
   margin: auto;
   justify-content: space-evenly;
-  padding: 20px;
-}
+} */
 .days-of-week {
-  display: flex;
-  margin: auto;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10%;
+  grid-template-rows: auto;
+  justify-content: center;
+  row-gap: 20px;
 }
-.days-number {
+.days-container {
   display: flex;
-  margin: auto;
-  justify-content: space-around;
+  justify-content: center;
   cursor: pointer;
+}
+.days-container:hover {
+  background-color: rgb(133, 133, 133);
+}
+.days-container-today {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(95, 95, 95);
 }
